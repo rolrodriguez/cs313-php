@@ -18,6 +18,9 @@
       <p>Coming Soon!!!</p>
     </section>
   </main>
+  <?php
+    include_once('./partials/footer.php');
+    ?>
   </div>
 
 </body>
