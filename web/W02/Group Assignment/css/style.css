@@ -1,0 +1,25 @@
+body{
+  background-color: #f3f3f3;
+}
+
+.block{
+  background-color: yellow;
+  font-size: 20px;
+  margin: auto;
+  text-align: center;
+}
+
+.block:hover{
+  font-weight: bold;
+  background-color:bisque;
+}
+
+input[type="text"]{
+  margin: 5px auto;
+}
+
+button{
+  text-align: center;
+  margin: 5px auto;
+}
+
