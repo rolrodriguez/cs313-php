@@ -41,7 +41,7 @@ $cont_Array = [
 
   $output= <<<EOD
 Your name is: ${name} <br />
-Your email is: <a href="mailto:${email}>"${email}</a><br />
+Your email is: <a href="mailto:${email}">${email}</a><br />
 Your major is: ${major} <br />
 You have visited:<br />
 EOD;
