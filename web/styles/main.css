@@ -108,6 +108,13 @@ main{
   grid-template-columns: 50% 50%;
 }
 
+main ul a{
+  color: black;
+}
+main ul a:hover{
+  text-decoration: underline;
+}
+
 section{
   padding: 1.1rem;
 }

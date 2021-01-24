@@ -1,3 +1,17 @@
+<?php
+  $assignments = [
+    "W02" => [
+      "Group assignment" => "./W02/groupAssignment/",
+      "Assignment: Home" => "/"
+    ],
+    "W03" => [
+      "Group assignment" => "./W03/groupAssignment/",
+      "Assignment: Shopping Cart" => "./W03/assignment/browseItems.php"
+    ]
+  ]
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,9 +29,17 @@
     include_once('./partials/header.php');
   ?>
   <main>
-    <section>
-      <p>Coming Soon!!!</p>
-    </section>
+    
+      <ul>
+      <? foreach ($assignments as $period => $assignment) :?>
+        <li><? echo $period ?></li>
+        <ul>
+          <? foreach ($assignment as $name => $url) : ?>
+                <li><a href="<? echo $url; ?>"><? echo $name; ?></a></li>
+          <? endforeach ?>
+        </ul>
+      <? endforeach ?>
+      </ul>
   </main>
   <?php
     include_once('./partials/footer.php');
