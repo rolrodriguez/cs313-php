@@ -8,12 +8,15 @@ require_once('./db.php');
 // Data cleaning functions
 require_once('./functions.php');
 
-if(isset($_POST)){
+if(isset($_POST) && !empty($_POST['address2']) && !empty($_POST['city'])){
   $address1 = cleanData($_POST['address1']);
   $address2 = cleanData($_POST['address2']);
   $city = cleanData($_POST['city']);
   $country = cleanData($_POST['country']);
 
+}
+else{
+  header('Location: ./checkout.php');
 }
 
 ?>
@@ -80,8 +83,10 @@ if(isset($_POST)){
 </body>
 
 <?php 
-  if (isset($_SESSION)){
-    session_destroy();
+  if(isset($_POST) && !empty($_POST['address2']) && !empty($_POST['city'])){
+    if (isset($_SESSION)){
+      session_destroy();
+    }
   }
 ?>
 <script src="./W03.js"></script>
