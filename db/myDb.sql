@@ -104,7 +104,7 @@ CREATE TABLE VaultBucketsEntries (
 
 /*
  * Dummy data for the tables
- * */
+ * */ 
 
 -- add extension to save sha256 of dummy password
 
