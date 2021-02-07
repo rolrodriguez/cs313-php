@@ -1,0 +1,141 @@
+html{
+  box-sizing: border-box;
+  height: 100vh;
+  font-size: 62.5%;
+}
+
+*, *::after, *::before{
+  box-sizing: inherit;
+}
+
+
+:root{
+  /* Typograghy */
+
+
+  /* Colors */
+  --colors-gray: #f3f3f3;
+  --colors-dark-gray: #4d4d4d;
+}
+
+body{
+  background-color: var(--colors-gray);
+}
+
+#app-container{
+  max-width: 1200px;
+  width: 95%;
+  margin: auto;
+}
+
+h1{
+  font-size: 3.8rem;
+}
+
+h2{
+  font-size: 2.6rem;
+}
+
+h3{
+  font-size: 1.4rem;
+}
+
+p, footer{
+  font-size: 1.4rem;
+}
+
+nav{
+  font-size: 1.8rem;
+}
+
+nav ul{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav a, nav a:visited{
+  text-decoration: none;
+  color: var(--colors-dark-gray);
+}
+
+#journal-search{
+  border: none;
+}
+
+.search-box{
+  padding: 1rem;
+  border: 1px solid gray;
+  text-align: center;
+}
+#search-submit{
+  padding: 0.3rem;
+  margin: 0 1rem;
+}
+
+form{
+  padding: 0.2rem;
+}
+
+.search-bar{
+  border: 1px solid gray;
+  width: inherit;
+  background-color: white;
+  display: inline;
+  padding: 0.6rem;
+  height: 100%;
+}
+#journal-search:focus{
+  outline: none;
+}
+
+#journal-search{
+  width: 40%;
+}
+
+.list-result{
+  border: 1px solid gray;
+  padding: 1.1rem;
+}
+
+.list-result a{
+  color: black;
+}
+
+.fa-search{
+  color: var(--colors-dark-gray);
+}
+
+input, label{
+  font-size: 1.4rem;
+}
+
+input.app-login-element, label.app-login-element{
+  text-align: center;
+}
+
+#app-login-box{
+  width: 50%;
+  margin: 2rem auto;
+  padding: 3rem;
+  background-color: var(--colors-dark-gray);
+  color: white;
+}
+
+.app-login-element{
+  display: block;
+  margin: 1rem auto;
+}
+
+#app-login-box > h2{
+  text-align: center;
+  display: block;
+  margin: 1rem;
+}
+
+@media only screen and (max-width: 900px){
+
+  #app-login-box{
+    width: 100%;
+  }
+}

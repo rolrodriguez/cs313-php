@@ -112,12 +112,12 @@ create extension if not exists pgcrypto;
 
 -- creating a user
 insert into users (username, "password", createdon, lastloggedon, lastmodifiedon) 
-values ('rolrodriguez', digest('password123', 'sha256'), now(), now(), now());
+values ('admin', encode(digest('admin', 'sha256'), 'hex'), now(), now(), now());
 
 -- creating a journal
 
 insert into journals (userid, journalname, journaldescription, createdon, lastmodifiedon) 
-values ((select userid from users where username = 'rolrodriguez'), 'My Japanese learning journal', 
+values ((select userid from users where username = 'admin'), 'My Japanese learning journal', 
 'This journal will include my daily notes about my journey to learn japanese', now(), now());
 
 -- creating a journal entry
@@ -130,7 +130,7 @@ now(), now());
 -- creating a vault bucket
 
 insert into vaultbuckets (userid, vaultname, createdon, lastmodifiedon) 
-values ((select userid from users where username = 'rolrodriguez'), 'difficult words', now(), now());
+values ((select userid from users where username = 'admin'), 'difficult words', now(), now());
 
 -- creating a vault bucket entry
 
