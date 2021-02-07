@@ -19,7 +19,7 @@ if(isset($userID)){
     
     <main>
       <div class="search-box">
-        <form method="get" action="<? echo '.'.$_SERVER['host'].$_SERVER['REQUEST_URI']; ?>">
+        <form method="get" action="./journalentries.php">
           <div class="search-bar">
             <input type="text" name="title" id="journal-search" autocomplete="off">
             <i class="search-icon fa fa-search"></i> 
