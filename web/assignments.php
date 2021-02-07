@@ -7,6 +7,9 @@
     "W03" => [
       "Group assignment" => "./W03/groupAssignment/",
       "Assignment: Shopping Cart" => "./W03/assignment/browseItems.php"
+    ],
+    "W05" => [
+      "Assignment: DB" => "./W05/"
     ]
   ]
 ?>
