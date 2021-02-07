@@ -25,7 +25,7 @@ require_once('./functions.php');
           <nav>
             <ul>
               <li><a href="./journals.php"> <i class="fa fa-home" aria-hidden="true"></i> Home</a> | </li>
-              <li><a href="./VaultBuckets.php"> <i class="fa fa-archive" aria-hidden="true"></i> VaultBuckets</a> | </li>
+              <li><a href="./vaultbuckets.php"> <i class="fa fa-archive" aria-hidden="true"></i> VaultBuckets</a> | </li>
               <li><a href="./logout.php"> <i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
             </ul>
           </nav>
