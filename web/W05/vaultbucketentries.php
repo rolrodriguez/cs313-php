@@ -5,12 +5,12 @@ $userID = $_SESSION['userid'];
 
 if(isset($userID)){
   $user = app_get_userdata_from_id($userID);
-  $journalID = $_GET['journal'];
-  if (!isset($journalID)){
-    header('location:./journals.php');
+  $vaultID = $_GET['vault'];
+  if (!isset($vaultID)){
+    header('location:./vaultbuckets.php');
   }
   if(isset($user)){
-    app_head('Journal Entries', 
+    app_head('Vault Bucket Entries', 
     Array(
     'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min', 
     './css/style',));
@@ -25,22 +25,22 @@ if(isset($userID)){
             <i class="search-icon fa fa-search"></i> 
           </div>
           <input id="search-submit" type="submit" value="Search">
-          <input type="hidden" name="journal" value="<? echo $_GET['journal']?>">
+          <input type="hidden" name="vault" value="<? echo $_GET['vault']?>">
         </form>
       </div>
       <div class="results">
-        <h2 class="results-title">Journal Entries</h2>
+        <h2 class="results-title">Vault Bucket entries</h2>
         <?
         
           $search = cleanData($_GET['title']);
           if (isset($search) && !empty($search)){
-            app_get_journalentries_from_journal($journalID, $search); 
+            app_get_vaultbucketentries_from_vault($vaultID, $search); 
           }
           else{
-            app_get_journalentries_from_journal($journalID); 
+            app_get_vaultbucketentries_from_vault($vaultID); 
           }
         ?>
-        <p class="returns"><a href="./journals.php?">Return to your journals</a></p>
+        <p class="returns"><a href="./vaultbucketentries.php?">Return to your vault buckets</a></p>
        
       </div>
     </main>

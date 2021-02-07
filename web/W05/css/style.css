@@ -14,7 +14,8 @@ html{
 
 
   /* Colors */
-  --colors-gray: #f3f3f3;
+  --colors-gray: #f6f6f6;
+  --colors-main: #1a6c9b;
   --colors-dark-gray: #4d4d4d;
 }
 
@@ -26,6 +27,28 @@ body{
   max-width: 1200px;
   width: 95%;
   margin: auto;
+}
+
+#app-title{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.fa-book{
+  display: block;
+  text-align: center;
+  font-size: 7rem;
+}
+
+.results-title{
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
+  border-top: 1px solid gray;
+  background-color: white;
+  margin: 0;
+  padding-left: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
 }
 
 h1{
@@ -44,6 +67,28 @@ p, footer{
   font-size: 1.4rem;
 }
 
+.returns{
+  background-color: white;
+  margin: 0;
+  padding: 2rem;
+  text-align: center;
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
+}
+.returns a{
+  text-decoration: none;
+  color: black;
+}
+.returns a:hover{
+  font-weight: bold;
+}
+
+footer{
+  text-align: center;
+  background-color: var(--colors-main);
+  color: white;
+}
+
 nav{
   font-size: 1.8rem;
 }
@@ -54,23 +99,34 @@ nav ul{
   list-style: none;
 }
 
+nav ul li{
+  display: inline-block;
+}
+nav a:hover{
+  text-decoration: underline;
+}
+
 nav a, nav a:visited{
   text-decoration: none;
-  color: var(--colors-dark-gray);
+  color: var(--colors-main);
 }
 
 #journal-search{
   border: none;
+  border-bottom: none;
 }
 
 .search-box{
   padding: 1rem;
   border: 1px solid gray;
   text-align: center;
+  background-color: var(--colors-main);
 }
 #search-submit{
   padding: 0.3rem;
   margin: 0 1rem;
+  position: relative;
+  top: 2px;
 }
 
 form{
@@ -95,11 +151,23 @@ form{
 
 .list-result{
   border: 1px solid gray;
-  padding: 1.1rem;
+  border-top: 3px solid gray;
+  padding: 1.2rem 2rem;
+  line-height: 2rem;
+  background-color: white;
+}
+
+.list-result > h3{
+  text-transform: uppercase;
 }
 
 .list-result a{
   color: black;
+}
+
+.detail{
+  padding: 3rem;
+  border-top: 1px solid gray;
 }
 
 .fa-search{
@@ -107,7 +175,7 @@ form{
 }
 
 input, label{
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
 
 input.app-login-element, label.app-login-element{
@@ -116,9 +184,9 @@ input.app-login-element, label.app-login-element{
 
 #app-login-box{
   width: 50%;
-  margin: 2rem auto;
+  margin: 4rem auto;
   padding: 3rem;
-  background-color: var(--colors-dark-gray);
+  background-color: var(--colors-main);
   color: white;
 }
 
@@ -132,10 +200,88 @@ input.app-login-element, label.app-login-element{
   display: block;
   margin: 1rem;
 }
+nav ul li > .fa{
+  color: var(--colors-main);
+}
+
+.vault-table{
+  padding: 2rem;
+  background-color: white;
+  border-collapse: collapse;
+  font-size: 2.1rem;
+  width: 80%;
+  margin: auto;
+}
+
+.table-box{
+  padding: auto;
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
+  background-color: white;  
+}
+
+.vault-table tbody tr:nth-child(odd){
+  background-color: rgb(189, 186, 186);
+}
+
+.vault-table thead tr{
+  background-color: var(--colors-main);
+  color: white;
+}
+
+.vault-table td, th{
+  border: 1px solid gray;
+}
 
 @media only screen and (max-width: 900px){
 
   #app-login-box{
     width: 100%;
+  }
+
+  .vault-table td, th{
+    display: block;
+    border: none;
+    width: 100%;
+    padding: 2rem 6rem;
+  }
+
+  .vault-table{
+    width: 80%;
+  }
+
+  .vault-table tr{
+    border: 1px solid gray;
+    display: block;
+    width: 100%;
+  }
+
+  .vault-table thead{
+    display: none;
+  }
+
+  .vault-table tbody td:nth-child(1)::before{
+    content: "Date: ";
+    font-weight: bold;
+  }
+
+  .vault-table tbody td:nth-child(2)::before{
+    content: "Value: ";
+    font-weight: bold;
+  }
+
+  .vault-table tbody td:nth-child(3)::before{
+    content: "Comment: ";
+    font-weight: bold;
+  }
+
+  .vault-table tbody td:nth-child(4)::before{
+    content: "Created on: ";
+    font-weight: bold;
+  }
+
+  .vault-table tbody td:nth-child(5)::before{
+    content: "Modified on: ";
+    font-weight: bold;
   }
 }

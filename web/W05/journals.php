@@ -2,7 +2,6 @@
 require_once('./app.php');
 session_start();
 $userID = $_SESSION['userid'];
-
 if(isset($userID)){
   $user = app_get_userdata_from_id($userID);
   if(isset($user)){
@@ -16,13 +15,14 @@ if(isset($userID)){
       <div class="search-box">
         <form method="get" action="./journals.php">
           <div class="search-bar">
-            <input type="text" name="title" id="journal-search">
+            <input type="text" name="title" id="journal-search" autocomplete="off">
             <i class="search-icon fa fa-search"></i> 
           </div>
           <input id="search-submit" type="submit" value="Search">
         </form>
       </div>
       <div class="results">
+        <h2 class="results-title">Journals</h2>
         <? 
         $search = cleanData($_GET['title']);
         if (isset($search) && !empty($search)){
@@ -39,11 +39,11 @@ if(isset($userID)){
     app_footer();
   }
   else{
-    header('location:./');
+    //header('location:./');
   }
 }
 else{
-  header('location:./');
+  //header('location:./');
 }
 
 

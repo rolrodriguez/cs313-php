@@ -10,7 +10,7 @@ if(isset($userID)){
     header('location:./journals.php');
   }
   if(isset($user)){
-    app_head('Journal Dashboard', 
+    app_head('Journal Entry Detail View', 
     Array(
     'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min', 
     './css/style',));
