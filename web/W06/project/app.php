@@ -331,11 +331,11 @@ require_once('./functions.php');
   function app_add_vaultbucketentry($formData){
     try {
       $db = dbConnect();
-      $recorddate = cleanData($formData['recorddate']);
+      $recorddate = $formData['recorddate'];
       $value = cleanData($formData['value']);
-      $vaultid = cleanData($formData['vaultid']);
+      $vaultid = cleanData($formData['vault']);
       $comment= cleanData($formData['comment']);
-      $stmt = $db->prepare("INSERT INTO vaultbucketsentries (vaultid, recorddate, value, comment, createdon, lastmodifiedon) VALUES (:vaultid, :recorddate, :value, comment, NOW(), NOW())");
+      $stmt = $db->prepare("INSERT INTO vaultbucketsentries (vaultid, recorddate, value, comment, createdon, lastmodifiedon) VALUES (:vaultid, :recorddate, :value, :comment, NOW(), NOW())");
       $stmt->bindValue(':vaultid', $vaultid);
       $stmt->bindValue(':recorddate', $recorddate);
       $stmt->bindValue(':value', $value);

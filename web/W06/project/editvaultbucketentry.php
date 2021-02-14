@@ -5,7 +5,7 @@ $userID = $_SESSION['userid'];
 if(isset($userID)){
   $user = app_get_userdata_from_id($userID);
   if(isset($user)){
-    $pAction = $_POST['action']; 
+    $pAction = $_POST['action'];
     switch($pAction){
       case 'new':
       if(empty($_POST['recorddate']) || empty($_POST['value']) || empty($_POST['comment'])){
@@ -13,7 +13,7 @@ if(isset($userID)){
       }
       else{
         app_add_vaultbucketentry($_POST);
-        header('Location:./vaultbucketentries.php?vault='.$_POST['vaultid']);
+        header('Location:./vaultbucketentries.php?vault='.$_POST['vault']);
       }
       break;
       case 'edit':
@@ -30,7 +30,7 @@ if(isset($userID)){
     $action = $_GET['action'];
     $id = $_GET['id'];
     if(empty($action) || ( $action == 'edit' && empty($id)) || !($action == 'edit' || $action == 'new' )){
-      header('Location:./vaultbuckententries.php');
+      header('Location:./vaultbucketentries.php');
     }
     switch($action):
     case 'new':?>
@@ -45,13 +45,13 @@ if(isset($userID)){
             <input type="text" name="value" id="value">
             <label for="value">Comment: </label>
             <input type="text" name="comment" id="comment">
-            <input type="hidden" name="vaultid" value="<? echo $_GET['vaultid']?>">
-            <input type="hidden" name="action" value="edit"><input type="submit" value="Create Entry">
+            <input type="hidden" name="vault" value="<? echo $_GET['vaultid']?>">
+            <input type="hidden" name="action" value="new"><input type="submit" value="Create Entry">
       </div>
       </form>
     <? break; ?>
     <?  case 'edit': ?>
-        <? $vaultentry = app_get_vaultentry_by_id($id); print_r($vaultentry)?>
+        <? $vaultentry = app_get_vaultentry_by_id($id); ?>
         <?  app_head('Vault Bucket Entries', Array('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min', 
       './css/style',));?>
         <? app_header();?>
