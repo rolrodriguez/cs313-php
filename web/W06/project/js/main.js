@@ -9,9 +9,11 @@ iconDeletes.forEach(icon => {
       buttons: true,
       dangerMode: true,
     }).then(response => {
-
-      switch (myPath) {
-        case "/journalentries.php":
+      let part = myPath.split('/');
+      let len = part.length
+      let comp = part[len - 1];
+      switch (comp) {
+        case "journalentries.php":
           if (response) {
             swal("The records were deleted").then(() => {
             location.href = './deletejournalentry.php?'+icon.dataset.id+'&'+icon.dataset.journalid;
@@ -19,7 +21,7 @@ iconDeletes.forEach(icon => {
           }
         break;
         
-        case "/journals.php":
+        case "journals.php":
           if (response) {
             swal("The records were deleted").then(() => {
             location.href = './deletejournal.php?'+icon.dataset.id;
@@ -27,7 +29,7 @@ iconDeletes.forEach(icon => {
           }
           break;
         
-        case "/vaultbuckets.php":
+        case "vaultbuckets.php":
           if (response) {
             swal("The records were deleted").then(() => {
             location.href = './deletevaultbucket.php?'+icon.dataset.id;
@@ -35,7 +37,7 @@ iconDeletes.forEach(icon => {
           }
           break;
         
-        case "/vaultbucketentries.php":
+        case "vaultbucketentries.php":
           if (response) {
             swal("The records were deleted").then(() => {
             location.href = './deletevaultbucketentry.php?'+icon.dataset.id+'&'+icon.dataset.vaultid;
