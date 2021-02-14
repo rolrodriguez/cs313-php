@@ -56,7 +56,7 @@ require_once('./functions.php');
       <button class="app-login-element" type="submit">Login</button>
     </form>
   </div>
-  <div id="link-register">Or create a new account <a href="./newuser.php">here</a></div>
+  <!-- <div id="link-register">Or create a new account <a href="./newuser.php">here</a></div> -->
 <? } ?>
 <? function app_register(){?>
   <div id="app-login-box">
@@ -181,7 +181,7 @@ require_once('./functions.php');
           <td><? echo date('Y-m-d h:i a', strtotime($row['createdon'])); ?></td>
           <td><? echo date('Y-m-d h:i a', strtotime($row['lastmodifiedon'])); ?></td>
           <td><a class="link-edit" href="./editvaultbucketentry.php?action=edit&id=<? echo urlencode($row['bucketentryid']) ?>"><i class="fa fa-pencil icon-edit"></i></a></td>
-          <td><i class="fa fa-trash icon-delete" data-journalid="journalid=<? echo urlencode($row['journalid']) ?>" data-id="journalentryid=<? echo urlencode($row['journalentryid']) ?>"></i></td>
+          <td><i class="fa fa-trash icon-delete" data-vaultid="vaultid=<? echo urlencode($row['vaultid']) ?>" data-id="bucketentryid=<? echo urlencode($row['bucketentryid']) ?>"></i></td>
         </tr>  
 <? endforeach; ?>
       </tbody></table></div>
@@ -261,6 +261,25 @@ require_once('./functions.php');
     }
   }
 
+  function app_update_vaultbucketentry($formData){
+    try {
+      $db = dbConnect();
+      $bucketentryid = cleanData($formData['bucketentryid']);
+      $recorddate = cleanData($formData['recorddate']);
+      $value = cleanData($formData['value']);
+      $comment = cleanData($formData['comment']);
+      $stmt = $db->prepare('UPDATE vaultbucketsentries SET recorddate = :recorddate, value = :value, comment = :comment, lastmodifiedon = NOW() WHERE bucketentryid = :id');
+      $stmt->bindValue(':recorddate', $recorddate);
+      $stmt->bindValue(':value', $value);
+      $stmt->bindValue(':comment', $comment);
+      $stmt->bindValue(':id', $bucketentryid);
+      $stmt->execute();
+    } catch (PDOException $ex) {
+      echo 'Error!: ' . $ex->getMessage();
+      die();
+    }
+  }
+
   function app_add_journal($userID, $formData){
     try {
       $db = dbConnect();
@@ -302,6 +321,25 @@ require_once('./functions.php');
       $stmt->bindValue(':journalid', $journalid);
       $stmt->bindValue(':entrytitle', $entrytitle);
       $stmt->bindValue(':entrytext', $entrytext);
+      $stmt->execute();
+    } catch (PDOException $ex) {
+      echo 'Error!: ' . $ex->getMessage();
+      die();
+    }
+  }
+
+  function app_add_vaultbucketentry($formData){
+    try {
+      $db = dbConnect();
+      $recorddate = cleanData($formData['recorddate']);
+      $value = cleanData($formData['value']);
+      $vaultid = cleanData($formData['vaultid']);
+      $comment= cleanData($formData['comment']);
+      $stmt = $db->prepare("INSERT INTO vaultbucketsentries (vaultid, recorddate, value, comment, createdon, lastmodifiedon) VALUES (:vaultid, :recorddate, :value, comment, NOW(), NOW())");
+      $stmt->bindValue(':vaultid', $vaultid);
+      $stmt->bindValue(':recorddate', $recorddate);
+      $stmt->bindValue(':value', $value);
+      $stmt->bindValue(':comment', $comment);
       $stmt->execute();
     } catch (PDOException $ex) {
       echo 'Error!: ' . $ex->getMessage();
@@ -351,6 +389,19 @@ require_once('./functions.php');
       $stmt = $db->prepare("DELETE FROM journalentries WHERE journalid = :journalid and journalentryid = :journalentryid");
       $stmt->bindValue(':journalid', $journalID);
       $stmt->bindValue(':journalentryid', $journalentryID);
+      $stmt->execute();
+    } catch (PDOException $ex) {
+      echo 'Error!: ' . $ex->getMessage();
+      die();
+    }
+  }
+
+  function app_delete_vaultbucketentry($vaultID, $bucketentryID){
+    try {
+      $db = dbConnect();
+      $stmt = $db->prepare("DELETE FROM vaultbucketsentries WHERE vaultid = :vaultid and bucketentryid = :bucketentryid");
+      $stmt->bindValue(':vaultid', $vaultID);
+      $stmt->bindValue(':bucketentryid', $bucketentryID);
       $stmt->execute();
     } catch (PDOException $ex) {
       echo 'Error!: ' . $ex->getMessage();

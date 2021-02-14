@@ -33,6 +33,14 @@ iconDeletes.forEach(icon => {
             location.href = './deletevaultbucket.php?'+icon.dataset.id;
             });
           }
+          break;
+        
+        case "/vaultbucketentries.php":
+          if (response) {
+            swal("The records were deleted").then(() => {
+            location.href = './deletevaultbucketentry.php?'+icon.dataset.id+'&'+icon.dataset.vaultid;
+            });
+          }
         break;
       }
       

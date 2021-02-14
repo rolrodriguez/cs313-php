@@ -5,12 +5,12 @@ $userID = $_SESSION['userid'];
 if(isset($userID)){
   $user = app_get_userdata_from_id($userID);
   if(isset($user)){
-    $journalID = $_GET['journalid'];
-    $entryID = $_GET['journalentryid'];
-    if(!empty($journalID) && !empty($entryID)){
-      app_delete_journalentry($journalID, $entryID); 
+    $vaultID = $_GET['vaultid'];
+    $bucketentryID = $_GET['bucketentryid'];
+    if(!empty($vaultID) && !empty($bucketentryID)){
+      app_delete_vaultbucketentry($vaultID, $bucketentryID); 
     }
-    header('location:./journalentries.php?journal='.$journalID);
+    header('location:./vaultbucketentries.php?vault='.$vaultID);
   }
   else{
     header('location:./');
