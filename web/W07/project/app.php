@@ -156,7 +156,13 @@ require_once('./functions.php');
           <i class="fa fa-trash icon-delete" data-id="journalid=<? echo urlencode($row['journalid']) ?>"></i>
         </div>
 
-<? endforeach; }  
+<? endforeach; 
+      if(empty($result)){?>
+              <div class="list-result">
+                <h3>There are no entries to view</h3>
+              </div>
+      <?}
+}  
 /**
  * Function: app_get_journalentries_from_journal
  * Description: Prints the journal entries from a journal. If a search string is defined,
@@ -186,7 +192,13 @@ require_once('./functions.php');
           <p>Last Modified on: <span> <? echo date('Y-m-d h:i a', strtotime($row['lastmodifiedon'])) ?></span></p>
           <i class="fa fa-trash icon-delete" data-journalid="journalid=<? echo urlencode($row['journalid']) ?>" data-id="journalentryid=<? echo urlencode($row['journalentryid']) ?>"></i>
         </div>  
-<? endforeach; } 
+<? endforeach; 
+      if(empty($result)){?>
+         <div class="list-result">
+          <h3>There are no entries to view</h3>
+        </div>
+      <?}
+} 
 /**
  * Function: app_get_journalentries_from_id
  * Description: Prints the journal entries using the journal entry id.
@@ -207,7 +219,13 @@ require_once('./functions.php');
           <p>Last Modified on: <span> <? echo date('Y-m-d h:i a', strtotime($row['lastmodifiedon'])) ?></span></p>
           <p><a href="./journalentries.php?journal=<? echo urlencode($row['journalid']) ?>">Return to journal</a></p>
         </div>  
-<? endforeach; } 
+<? endforeach; 
+      if(empty($result)){?>
+         <div class="list-result">
+          <h3>There are no entries to view</h3>
+        </div>
+      <?}
+} 
 /**
  * Function: app_get_vaultbucket_by_userid
  * Description: Prints the vault buckets from a user
@@ -236,7 +254,13 @@ require_once('./functions.php');
           <i class="fa fa-trash icon-delete" data-id="vaultid=<? echo urlencode(cleanData($row['vaultid'])) ?>"></i>
         </div>
 
-<? endforeach; }  
+<? endforeach; 
+    if(empty($result)){?>
+         <div class="list-result">
+          <h3>There are no entries to view</h3>
+        </div>
+    <?}
+}  
 /**
  * Function: app_get_vaultbucketentries_from_vault
  * Description: Prints the vault buckets entries for a bucket
