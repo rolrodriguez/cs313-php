@@ -13,6 +13,9 @@
     ], 
     "W06" => [
       "Assignment: Update DB" => "./W06/project/"
+    ],
+    "W07" => [
+      "Assignment: Project" => "./W07/project/"
     ]
   ]
 ?>
