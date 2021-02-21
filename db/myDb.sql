@@ -31,8 +31,7 @@ CREATE TABLE users (
   username 			varchar(40) not null unique,
   password 			text not NULL,
   createdon 		timestamp not null, 
-  lastloggedon 		timestamp not null,
-  lastmodifiedon 	timestamp not null
+  lastloggedon 		timestamp not null
 );
 
 /*
@@ -111,11 +110,11 @@ CREATE TABLE VaultBucketsEntries (
 create extension if not exists pgcrypto;
 
 -- creating a user
-insert into users (username, "password", createdon, lastloggedon, lastmodifiedon) 
-values ('admin', encode(digest('admin', 'sha256'), 'hex'), now(), now(), now());
+insert into users (username, "password", createdon, lastloggedon) 
+values ('admin', encode(digest('admin123', 'sha256'), 'hex'), now(), now());
 
-insert into users (username, "password", createdon, lastloggedon, lastmodifiedon) 
-values ('admin2', encode(digest('admin2', 'sha256'), 'hex'), now(), now(), now());
+insert into users (username, "password", createdon, lastloggedon) 
+values ('admin2', encode(digest('admin1234', 'sha256'), 'hex'), now(), now());
 
 -- creating a journal
 
